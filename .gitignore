@@ -1,0 +1,10 @@
+node_modules
+
+/.cache
+/build
+.env
+
+# macOS
+.DS_Store
+*.pem
+**/.DS_Store
