@@ -1,13 +1,14 @@
-import Home from "~/pages/home/home";
-import type { Route } from "./+types/home";
+import About from "~/pages/about/about";
+import type { Route } from "./+types/about";
+
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Redball Studio | Home" },
+    { title: "Redball Studio | Our Studio" },
     { name: "description", content: "Welcome to Redball Recording Studio" },
   ];
 }
 
 export default function Page() {
-  return <Home/>;
+  return <About/>;
 }
