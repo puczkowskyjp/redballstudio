@@ -1,5 +1,7 @@
 export default function Index() {
   return (
-    <div>About</div>
+    <div>
+      <p>Hi we're redball we record sounds and stuff...farts.</p>
+    </div>
   );
 }

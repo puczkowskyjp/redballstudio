@@ -1,8 +1,8 @@
-import underConstruction from "public/under-construction.jpeg";
+import underConstruction from "/under-construction.jpeg?url";
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col pt-8 justify-center items-center">
       <h2 className="text-lg">This Site and Studio are under construction!</h2>
       <section className="p-4 flex flex-col gap-y-4 items-center">
         <p>
