@@ -13,7 +13,7 @@ export const ScreenSizeContext = createContext<IScreenSize>({
   isDesktop: false,
 });
 
-export const useScreenSize = () => {
+export default function useScreenSize() {
   const context = useContext(ScreenSizeContext);
 
   if (!context) {
