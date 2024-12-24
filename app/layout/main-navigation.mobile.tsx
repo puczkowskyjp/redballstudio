@@ -8,20 +8,19 @@ import { NavLink, useLocation } from "react-router";
 import { useState, type PropsWithChildren } from "react";
 import redballLogo from "/redball-logo.png?url";
 import { motion } from 'framer-motion';
-
-
 import {
   Drawer,
   DrawerContent,
-} from "~/components/ui/drawer"
+} from "~/components/ui/drawer";
 
 export default function MainNavigationMobile() {
   const [selectedItem, setSelectedItem] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(false);
 
   const getBallXPosition = (index: number) => {
     if (index === 0) return index;
-    if (index === 1) return index * 40; // First item
+    if (index === 1) return index * (animationComplete ?  40 : 30); // First item
     return index * 25 + 5; // Adjust the multiplier for spacing
   };
 
@@ -94,9 +93,14 @@ export default function MainNavigationMobile() {
                 }}
                 animate={{
                   y: getBallXPosition(selectedItem), // Move the ball
-                  rotate: 360 * (selectedItem + 1),  // Rotate the ball as it moves
+                  rotate: 20 * (selectedItem + 1),  // Rotate the ball as it moves
                 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                transition={{
+                  type: 'spring', 
+                  stiffness: 500, 
+                  damping: 15, 
+                  ease: "easeInOut",
+                }}
               />
               <NavigationMenuList className="flex flex-col items-start justify-start space-y-4 space-x-0 pl-4 py-8">
                 <NavigationMenuItem onClick={() => setSelectedItem(0)}>
@@ -113,9 +117,6 @@ export default function MainNavigationMobile() {
           </div>
         </DrawerContent>
       </Drawer>
-
-      {/* Ball */}
-
     </>
   );
 };
