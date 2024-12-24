@@ -18,8 +18,8 @@
       "dest": "/under-construction.jpeg"
     },
     {
-      "src": "/dano.jpg",
-      "dest": "/dano.jpg"
+      "src": "/dano.jpeg",
+      "dest": "/dano.jpeg"
     },
     {
       "src": "/assets/(.*)",
