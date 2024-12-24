@@ -6,7 +6,7 @@ import {
 } from "~/components/ui/navigation-menu";
 import { NavLink, useLocation } from "react-router";
 import { useState, type PropsWithChildren } from "react";
-import redballLogo from "/redball-logo.png?url";
+import redballLogo from "/redball-logo.png";
 import { motion } from 'framer-motion';
 
 function RedballNavigationDesktop() {
@@ -14,8 +14,8 @@ function RedballNavigationDesktop() {
 
   const getBallXPosition = (index: number) => {
     if (index === 0) return index;
-    if (index === 1) return index * 52; // First item
-    return index * 34; // Adjust the multiplier for spacing
+    if (index === 1) return index * 56; // First item
+    return index * 37.5; // Adjust the multiplier for spacing
   };
 
   return (
@@ -44,7 +44,7 @@ function RedballNavigationDesktop() {
             x: getBallXPosition(selectedItem), // Move the ball
             rotate: 360 * (selectedItem + 1),  // Rotate the ball as it moves
           }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          transition={{ type: 'spring', stiffness: 150, damping: 25 }}
         />
         <NavigationMenuList className="gap-x-2">
           <NavigationMenuItem onClick={() => setSelectedItem(0)}>

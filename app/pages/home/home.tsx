@@ -1,4 +1,4 @@
-import underConstruction from "/under-construction.jpeg?url";
+import underConstruction from "/under-construction.jpeg";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
           <img
             src={underConstruction}
             alt="Image of studio building under construction"
-            className="h-96 w-auto" />
+            className="h-96 w-auto rounded-lg" />
         </div>
       </section>
     </div>
