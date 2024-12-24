@@ -6,6 +6,18 @@
       "dest": "/favicon.ico"
     },
     {
+      "src": "/redball-logo.png",
+      "dest": "/redball-logo.png"
+    },
+    {
+      "src": "/redball.png",
+      "dest": "/redball.png"
+    },
+    {
+      "src": "under-construction.jpeg",
+      "dest": "/under-construction.jpeg"
+    },
+    {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
     },
