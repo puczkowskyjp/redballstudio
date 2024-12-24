@@ -20,7 +20,7 @@ export default function MainNavigationMobile() {
 
   const getBallXPosition = (index: number) => {
     if (index === 0) return index;
-    if (index === 1) return index * (animationComplete ?  40 : 30); // First item
+    if (index === 1) return index * 40; // First item
     return index * 25 + 5; // Adjust the multiplier for spacing
   };
 
