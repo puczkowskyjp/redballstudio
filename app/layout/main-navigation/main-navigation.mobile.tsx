@@ -1,22 +1,21 @@
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "~/components/ui/navigation-menu";
-import { NavLink, useLocation } from "react-router";
-import { useState, type PropsWithChildren } from "react";
+import { useState } from "react";
 import redballLogo from "/redball-logo.png?url";
 import { motion } from 'framer-motion';
 import {
   Drawer,
   DrawerContent,
 } from "~/components/ui/drawer";
+import HamburgerMenu from "~/components/hamburger-menu";
+import NavigationLink from "./navigation-link";
 
 export default function MainNavigationMobile() {
   const [selectedItem, setSelectedItem] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(false);
 
   const getBallXPosition = (index: number) => {
     if (index === 0) return index;
@@ -38,45 +37,10 @@ export default function MainNavigationMobile() {
             className="h-16 w-auto" />
           <h1 className="text-xl">Redball Recording Studio</h1>
         </div>
-        {/* Hamburger Icon */}
-        <motion.div
-          onClick={toggleMenu}
-          className="cursor-pointer flex flex-col justify-center items-center space-y-1"
-          animate={{
-            rotate: isOpen ? 45 : 0, // Rotate the hamburger to X
-          }}
-          transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-        >
-          {/* Top bar */}
-          <motion.div
-            className="w-8 h-1 bg-white"
-            animate={{
-              rotate: isOpen ? 90 : 0, // Rotate the top bar when open
-              translateY: isOpen ? 6 : 0, // Move it down when it's an X
-            }}
-            transition={{ duration: 0.3 }}
-          />
-          {/* Middle bar */}
-          <motion.div
-            className="w-8 h-1 bg-white"
-            animate={{
-              opacity: isOpen ? 0 : 1, // Hide the middle bar when open
-            }}
-            transition={{ duration: 0.3 }}
-          />
-          {/* Bottom bar */}
-          <motion.div
-            className="w-8 h-1 bg-white"
-            animate={{
-              //rotate: isOpen ? 10 : 0, // Rotate the bottom bar when open
-              translateY: isOpen ? -9.5 : 0, // Move it up when it's an X
-            }}
-            transition={{ duration: 0.3 }}
-          />
-        </motion.div>
+        <HamburgerMenu isOpen={isOpen} toggleMenu={toggleMenu} />
       </header>
+      
       <Drawer open={isOpen} onClose={toggleMenu} >
-        {/* <DrawerTrigger>Open</DrawerTrigger> */}
         <DrawerContent className="bg-[#2d2d2d] text-[#f4f4f4]">
           <div className="mx-4 w-full max-w-sm h-1/2">
             <NavigationMenu id="nav-menu" orientation="vertical">
@@ -104,13 +68,13 @@ export default function MainNavigationMobile() {
               />
               <NavigationMenuList className="flex flex-col items-start justify-start space-y-4 space-x-0 pl-4 py-8">
                 <NavigationMenuItem onClick={() => setSelectedItem(0)}>
-                  <Link to="/">Home</Link>
+                  <NavigationLink to="/">Home</NavigationLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem onClick={() => setSelectedItem(1)}>
-                  <Link to="/our-studio">About</Link>
+                  <NavigationLink to="/our-studio">About</NavigationLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem onClick={() => setSelectedItem(3)}>
-                  <Link to="/engineers">Engineers</Link>
+                  <NavigationLink to="/engineers">Engineers</NavigationLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
@@ -120,17 +84,3 @@ export default function MainNavigationMobile() {
     </>
   );
 };
-
-interface LinkProps extends PropsWithChildren {
-  to: string;
-}
-
-function Link({ to, ...props }: LinkProps) {
-  const location = useLocation();
-  const isActive = location.pathname === to;
-  return (
-    <NavigationMenuLink asChild active={isActive}>
-      <NavLink to={to} {...props} />
-    </NavigationMenuLink>
-  );
-}

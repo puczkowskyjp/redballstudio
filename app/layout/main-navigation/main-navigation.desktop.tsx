@@ -1,13 +1,12 @@
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "~/components/ui/navigation-menu";
-import { NavLink, useLocation } from "react-router";
-import { useState, type PropsWithChildren } from "react";
+import { useState } from "react";
 import redballLogo from "/redball-logo.png";
 import { motion } from 'framer-motion';
+import NavigationLink from "./navigation-link";
 
 function RedballNavigationDesktop() {
   const [selectedItem, setSelectedItem] = useState(0);
@@ -48,13 +47,13 @@ function RedballNavigationDesktop() {
         />
         <NavigationMenuList className="gap-x-2">
           <NavigationMenuItem onClick={() => setSelectedItem(0)}>
-            <Link to="/">Home</Link>
+            <NavigationLink to="/">Home</NavigationLink>
           </NavigationMenuItem>
           <NavigationMenuItem onClick={() => setSelectedItem(1)}>
-            <Link to="/our-studio">About</Link>
+            <NavigationLink to="/our-studio">About</NavigationLink>
           </NavigationMenuItem>
           <NavigationMenuItem onClick={() => setSelectedItem(3)}>
-            <Link to="/engineers">Engineers</Link>
+            <NavigationLink to="/engineers">Engineers</NavigationLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
@@ -62,18 +61,5 @@ function RedballNavigationDesktop() {
   );
 };
 
-interface LinkProps extends PropsWithChildren {
-  to: string;
-}
-
-function Link({ to, ...props }: LinkProps) {
-  const location = useLocation();
-  const isActive = location.pathname === to;
-  return (
-    <NavigationMenuLink asChild active={isActive}>
-      <NavLink to={to} {...props} />
-    </NavigationMenuLink>
-  );
-}
 
 export default RedballNavigationDesktop;
