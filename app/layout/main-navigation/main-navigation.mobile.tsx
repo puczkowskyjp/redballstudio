@@ -9,9 +9,13 @@ import { motion } from 'framer-motion';
 import {
   Drawer,
   DrawerContent,
+  DrawerTitle,
+  DrawerHeader,
+  DrawerDescription
 } from "~/components/ui/drawer";
 import HamburgerMenu from "~/components/hamburger-menu";
 import NavigationLink from "./navigation-link";
+
 
 export default function MainNavigationMobile() {
   const [selectedItem, setSelectedItem] = useState(0);
@@ -42,6 +46,8 @@ export default function MainNavigationMobile() {
       
       <Drawer open={isOpen} onClose={toggleMenu} >
         <DrawerContent className="bg-[#2d2d2d] text-[#f4f4f4]">
+          <DrawerTitle id="mobileNavigationTitle" className="sr-only">Redball Mobile Navigation Drawer</DrawerTitle>
+          <DrawerDescription className="sr-only">Select a page to navigate to.</DrawerDescription>
           <div className="mx-4 w-full max-w-sm h-1/2">
             <NavigationMenu id="nav-menu" orientation="vertical">
               <motion.div
